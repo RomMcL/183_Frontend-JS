@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0">    
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="#" />
+    <title>Главная</title>
+</head>
+
+<body>
+  
+    <main>
+        <h1>Знакоство с JavaScript</h1>
+        <section>  
+          <h2>Рассчёт возраста</h2>            
+          <form>
+            <label for="birthday-input">Введите дату своего рождения:</label>
+            <input type="date" id="birthday-input" name="birthday" value="2000-01-01" min="1900-01-01"/> 
+            <input id="сalculateAge-btn" type="button" value="Рассчитать" />
+          </form>         
+          <div>
+            <h3>Результаты:</h3>
+            <p>
+              <span>Полных лет:</span>
+              <span class="rez-age"></span>
+            </p>
+            <p>
+              <span>Полных месяцев:</span>
+              <span class="rez-age"></span>
+            </p>
+            <p>
+              <span>Прожито месяцев:</span>
+              <span class="rez-age"></span>
+            </p>
+          </div>               
+        </section>
+
+        <section> 
+          <h2>Теорема Пифагора </h2>  
+          
+          <form>
+            <label for="catheter-1">Катет 1:</label>
+            <input type="number" id="catheter-1" name="catheter-1" min="0"/>
+            <label for="catheter-2">Катет 2:</label>
+            <input type="number" id="catheter-2" name="catheter-2" min="0"/>
+            <input id="сalculateHypotenuse-btn" type="button" value="Рассчитать" />
+          </form>
+          <div>
+            <h3>Результаты:</h3>
+            <p>
+              <span>Квадрат 1-го катета:</span>
+              <span class="rez-pif"></span>
+            </p>
+            <p>
+              <span>Квадрат 2-го катета:</span>
+              <span class="rez-pif"></span>
+            </p>
+            <p>
+              <span>Сумма квадратов катетов:</span>
+              <span class="rez-pif"></span>
+            </p>
+            <p>
+              <span>Гипотенуза:</span>
+              <span class="rez-pif"></span>
+            </p>
+          </div>                
+        </section>       
+    </main>
+
+    <script src="./js/main.js"></script>   
+
+</body>
+</html>
