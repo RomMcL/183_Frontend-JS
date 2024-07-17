@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0">    
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <title>Главная</title>
+</head>
+
+<body>
+  
+    <main>
+        <h1>Анализатор русского текста</h1>
+        <section> 
+            <form>
+                <label for="textarea-input">Введите текст для анализа</label>
+                <textarea id="textarea-input" rows="15" cols="33"></textarea>
+                <input id="text-analizator-btn" type="button" value="Проанализировать текст" />
+            </form> 
+            <div class="rez-div">
+                <h2>Результат</h2>
+                <p>Введено символов:<span class="indication"></span></p>
+                <p>Слов в тексте:<span class="indication"></span></p>
+                <p>Количество пробелов:<span class="indication"></span></p>
+                <p>Спец символов:<span class="indication"></span></p>
+                <p>Цифр использовано:<span class="indication"></span></p>
+                <p>Букв всего:<span class="indication"></span></p>
+                <p>Гласных букв:<span class="indication"></span></p>
+                <p>Согласных букв:<span class="indication"></span></p>
+                <p>Графических символов:<span class="indication"></span></p>
+                <p>Букв в верхнем регистре:<span class="indication"></span></p>
+                <p>Букв в нижнем регистре:<span class="indication"></span></p>
+            </div>                                            
+        </section>       
+    </main>
+
+    <script src="./js/main.js"></script>   
+
+</body>
+</html>

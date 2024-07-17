@@ -1,0 +1,41 @@
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    text-align: center;    
+}
+
+section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    column-gap: 2em;
+}
+
+form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 1em;
+    margin-top: 2em;
+}
+
+form label {
+    font-weight: bold;
+}
+
+.rez-div p {
+    background-color: bisque;
+    text-align: left;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 1em;    
+}
+
+.rez-div p span {
+    font-weight: bold;
+    margin-left: 1em;   
+}
