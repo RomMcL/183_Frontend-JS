@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0">    
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./css/weather.css" />
+    <title>Погодник</title>
+</head>
+
+<body>
+  
+    <main>
+        <h1>Погода в городе</h1>
+        <section id="pic_day_weather">
+
+            <div id="weather_navigation">
+                
+                <div id="weather_change_city" class="weather_navigation_btn">
+                    <img id="change_img" class="change_city_img" src="../img/return.svg" alt="ChangeCityIcon">
+                    <span>Сменить город</span> 
+                </div>
+                <div id="weather_my_city" class="weather_navigation_btn">
+                    <img id="my_img" class="change_city_img" src="../img/location.svg" alt="LocationIcon">
+                    <span>Моё местоположение</span> 
+                </div>
+                
+            </div>
+        
+            <div id="weather_window">
+                <img class="loader" src="../img/loading1.gif" alt="loader">
+            </div>
+        
+        </section>
+    </main>
+
+
+    <!-- <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous">
+    </script> -->
+    <script src="./js/jquery-3.7.1.min.js"></script> 
+    <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>
