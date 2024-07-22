@@ -1,15 +1,17 @@
 
-/* import { my_secret } from "./my_secret.js" */   // Убрать, если локально (без liveserver)
+
+let weatherAppid = 'Ваш ключ с openweathermap.org';
+let geoapifyKey = 'Ваш ключ с geoapify.com';
+let keyMyAPI = 'Ключ от Ромы';
 
 
-// Для локального тестирования (без liveserver)
-const my_secret = {
-    'myWeatherKey': '423f76c6bd7a6c7df6e42bb4a28240d6',
-    'myGeolocationKey': 'fc9cca72d5c2441d8b8fea67c43ccecd'
-};
+// Ниже мои ключи. Нужно будет их убрать отсюда.
+// Для теста раскомментируйте.
 
-let myAppid = my_secret['myWeatherKey']; // Тут должен быть Ваш ключ с openweathermap.org
-let myApiKey = my_secret['myGeolocationKey']; // Тут должен быть Ваш ключ с geoapify.com
+/* weatherAppid = '423f76c6bd7a6c7df6e42bb4a28240d6';
+geoapifyKey = 'fc9cca72d5c2441d8b8fea67c43ccecd';
+keyMyAPI = 'mneRomaRazreshil'; */
+
 
 let store = {
     dt: 0,
@@ -47,14 +49,15 @@ let weatherData = async (city) => {
     
     // Прямой запрос к API openweathermap.org ----------------------------------------------------------------
 
-    /* let weather_link = `https://api.openweathermap.org/data/2.5/weather?appid=${myAppid}&lang=ru&units=metric`; 
+    /* let weather_link = `https://api.openweathermap.org/data/2.5/weather?appid=${weatherAppid}&lang=ru&units=metric`; 
     let response = await fetch(`${weather_link}&q=${city}`); */
     
     // -------------------------------------------------------------------------------------------------------
    
     // Запрос к моему API openweathermapSosiBibu.pythonanywhere.com ------------------------------------------
 
-    let response = await fetch(`https://openweathermapsosibibu.pythonanywhere.com/parametrs?appid=${myAppid}&city=${city}`,
+    let myAPI_link = `https://openweathermapsosibibu.pythonanywhere.com/parametrs?`;
+    let response = await fetch(`${myAPI_link}key=${keyMyAPI}&appid=${weatherAppid}&city=${city}`,
         { 
             method: 'get', 
             mode: 'cors' 
@@ -66,38 +69,42 @@ let weatherData = async (city) => {
     let data = await response.json();
     /* console.log(data); */
 
-      
-    let {
-        sys: { country, sunrise, sunset },
-        main: { feels_like: feelsLike, humidity, pressure, temp, temp_max: tempMax, temp_min: tempMin },
-        clouds: { all: clouds },
-        wind: { deg, speed },
-        visibility,
-        dt
-    } = data;
 
+    if (data['romaSay'] != undefined) {
+        romaSay(data);
+    } 
+    else {
+        let {
+            sys: { country, sunrise, sunset },
+            main: { feels_like: feelsLike, humidity, pressure, temp, temp_max: tempMax, temp_min: tempMin },
+            clouds: { all: clouds },
+            wind: { deg, speed },
+            visibility,
+            dt
+        } = data;
 
-    store = {
-        ...store,
-        dt: calculWeatherTimes(dt, 'hm'),
-        country,
-        sunrise: calculWeatherTimes(sunrise, 'hms'),
-        sunset: calculWeatherTimes(sunset, 'hms'),
-        temp: Math.round(temp),
-        tempMax: Math.ceil(tempMax),
-        tempMin: Math.floor(tempMin),
-        id: data.weather[0].id,
-        description: data.weather[0].description,
-        clouds,
-        feelsLike: Math.round(feelsLike),
-        humidity,
-        visibility: visibility / 1000,
-        pressure: Math.round(pressure / 1.33307087),
-        deg,
-        speed
-    };
+        store = {
+            ...store,
+            dt: calculWeatherTimes(dt, 'hm'),
+            country,
+            sunrise: calculWeatherTimes(sunrise, 'hms'),
+            sunset: calculWeatherTimes(sunset, 'hms'),
+            temp: Math.round(temp),
+            tempMax: Math.ceil(tempMax),
+            tempMin: Math.floor(tempMin),
+            id: data.weather[0].id,
+            description: data.weather[0].description,
+            clouds,
+            feelsLike: Math.round(feelsLike),
+            humidity,
+            visibility: visibility / 1000,
+            pressure: Math.round(pressure / 1.33307087),
+            deg,
+            speed
+        };
 
-    renderComponent();
+        renderComponent();
+    }
 };
 
 
@@ -373,6 +380,19 @@ function calculWeatherTimes(date_unix, option_return) {
     }
 }
 
+function romaSay(keyErrorData) {
+    $('.loader').detach();
+
+    $('#weather_window').append(
+        '<div class="container">' +
+            '<h1></h1>' + '<p></p>' +
+        '</div>');
+
+    $('.container').children('h1').html(`${keyErrorData['noValidKey']}`);
+    $('.container').children('p').html(`${keyErrorData['romaSay']}`);
+    $('.container').children('p').attr('style', 'text-align: center;');
+}
+
 
 /* Смена города */
 
@@ -476,7 +496,7 @@ $('#weather_my_city').on('click', () => {
 
     const success = async (pos) => {
         const coordinates = pos.coords;
-        const response  = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${coordinates.latitude}&lon=${coordinates.longitude}&lang=ru&apiKey=${myApiKey}`);
+        const response  = await fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${coordinates.latitude}&lon=${coordinates.longitude}&lang=ru&apiKey=${geoapifyKey}`);
 
         const result = await response.json();
 
