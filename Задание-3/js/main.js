@@ -1,6 +1,12 @@
 
-import { my_secret } from "./my_secret.js"
+/* import { my_secret } from "./my_secret.js" */   // Убрать, если локально (без liveserver)
 
+
+// Для локального тестирования (без liveserver)
+const my_secret = {
+    'myWeatherKey': '423f76c6bd7a6c7df6e42bb4a28240d6',
+    'myGeolocationKey': 'fc9cca72d5c2441d8b8fea67c43ccecd'
+};
 
 let myAppid = my_secret['myWeatherKey']; // Тут должен быть Ваш ключ с openweathermap.org
 let myApiKey = my_secret['myGeolocationKey']; // Тут должен быть Ваш ключ с geoapify.com
@@ -211,7 +217,7 @@ function fillingWithData() {
         }
     })
     $('.weather_icon').attr({
-        src: `../img/weather/${getWeatherIcon(id)}`,
+        src: `img/weather/${getWeatherIcon(id)}`,
         alt: "WeatherIcon"
     });
     $('.temperature').children('span').html(`${temp}°`);
@@ -234,22 +240,22 @@ function fillingWithData() {
     $('.additional_icon').each((index, item) => {
         switch (index){
             case 0: $(item).attr({
-                        src: '../img/weather/humidity.png',
+                        src: 'img/weather/humidity.png',
                         alt: 'HumidityIcon'
                     });
                     break;
             case 1: $(item).attr({
-                        src: '../img/weather/visibility.png',
+                        src: 'img/weather/visibility.png',
                         alt: 'VisibilityIcon'
                     });
                     break;
             case 2: $(item).attr({
-                        src: '../img/weather/wind.png',
+                        src: 'img/weather/wind.png',
                         alt: 'WindIcon'
                     });
                     break;
             case 3: $(item).attr({
-                        src: '../img/weather/pressure.png',
+                        src: 'img/weather/pressure.png',
                         alt: 'PressureIcon'
                     });
                     break;
@@ -274,7 +280,7 @@ function fillingWithData() {
     })
           
     $('.wind_nav').attr({
-        src: '../img/navigation.svg',
+        src: 'img/navigation.svg',
         alt: 'Wind'
     });
 
@@ -394,7 +400,7 @@ $('#weather_change_city').on('click', () => {
                         <button id="new_city_save">Найти и запомнить</button> 
                     </div>
                     <div id="new_city_close">
-                        <img src="../img/close.svg" alt="Close"> 
+                        <img src="img/close.svg" alt="Close"> 
                     </div>            
                 </div>`;
       };
