@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0">    
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/clock.css" />
+    <script src="js/jquery-3.7.1.min.js"></script> 
+    
+    <title>Часы</title>
+</head>
+
+<body>
+  
+    <main>
+        <h1>Текущее время</h1>
+        <section>
+
+            <button id="showClockBtn">Взглянуть на часы</button>
+
+            <div class="vopros">
+                <p>Часики в модальном окне.</p>
+                <p>Вопрос: Можно зачесть ими как задание по завершению часов, так и задание, где нужно создать модальное окно на JQuery с плавным появлением?</p>
+            </div>
+            
+            <div class="modal">
+                <h2>Дедлайн близко!</h2>
+                <canvas id="clock"></canvas>
+                <div id="tik-tak">
+                    <span id="tik">Тик</span>
+                    
+                    <span id="tak">Так</span>
+                </div>
+                <span id="closeBtn">+</span>
+            </div>
+                            
+        </section>
+    </main>
+    <script src="js/clock.js"></script>
+</body>
+</html>
